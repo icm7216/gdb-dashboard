@@ -1895,11 +1895,7 @@ The length defaults to 16 bytes.''',
             },
             'placeholder': {
                 'doc': 'Placeholder used for missing items and unprintable characters.',
-                'default': chr(0x2e),
-                # 'default': '·'
-                # Use 0x2e instead of 0xb7.
-                # In Windows environment, the "·" character (0xb7), which represents a non-display character, is displayed as "ﾂｷ".
-                # The cause could be shift-jis.
+                'default': '·'
             }
         }
 
@@ -2327,3 +2323,14 @@ python Dashboard.start()
 # Local Variables:
 # mode: python
 # End:
+
+
+# Fix mojibake in Windows(Jananese)
+
+# Use 0x2e instead of 0xb7.
+# In Windows environment, the "·" character (0xb7), which represents a non-display character, is displayed as "ﾂｷ".
+# The cause could be shift-jis.
+dashboard memory -style placeholder "."
+
+dashboard -style divider_fill_char_primary '-'
+dashboard -style divider_fill_char_secondary '-'
