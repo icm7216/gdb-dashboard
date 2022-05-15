@@ -1895,7 +1895,11 @@ The length defaults to 16 bytes.''',
             },
             'placeholder': {
                 'doc': 'Placeholder used for missing items and unprintable characters.',
-                'default': '·'
+                'default': chr(0x2e),
+                # 'default': '·'
+                # Use 0x2e instead of 0xb7.
+                # In Windows environment, the "·" character (0xb7), which represents a non-display character, is displayed as "ﾂｷ".
+                # The cause could be shift-jis.
             }
         }
 
